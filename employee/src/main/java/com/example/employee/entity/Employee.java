@@ -1,5 +1,6 @@
 package com.example.employee.entity;
 
+import com.example.employer.entity.Employer;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -35,6 +36,11 @@ public class Employee {
     @Column
     private double salary;
 
+    @ManyToOne
+    @JoinColumn(name = "employer_id", nullable = false)
+    private Employer employer;
+
+
     public Long getId() {return id;}
     public void setId(Long id) {this.id = id;}
     public String getName() {return name;}
@@ -54,4 +60,11 @@ public class Employee {
     public double getSalary() {return salary;}
     public void setSalary(double salary) {this.salary = salary;}
 
+    public Employer getEmployer() {
+        return employer;
+    }
+
+    public void setEmployer(Employer employer) {
+        this.employer = employer;
+    }
 }
